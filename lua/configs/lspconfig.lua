@@ -1,23 +1,61 @@
--- EXAMPLE 
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-local lspconfig = require "lspconfig"
-local servers = { "html", "cssls" }
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  callback = function()
+    vim.diagnostic.setloclist { open = false }
+  end,
+})
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-  }
-end
+local configs = require "nvchad.configs.lspconfig"
 
--- typescript
-lspconfig.tsserver.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
+local servers = {
+  awk_ls = {},
+  bashls = {},
+  cssls = {},
+  docker_compose_language_service = {},
+  dockerls = {},
+  eslint = {},
+  golangci_lint_ls = {},
+  gopls = {},
+  html = {},
+  jsonls = {},
+  lemminx = {},
+  marksman = {},
+  pylsp = {},
+  ruff_lsp = {},
+  taplo = {},
+  terraformls = {},
+  tflint = {},
+  vale_ls = {},
+  yamlls = {},
+
+  pyright = {
+    settings = {
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          typeCheckingMode = "strict",
+          useLibraryCodeForTypes = true,
+        },
+      },
+    },
+  },
+
+  lua_ls = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+      },
+    },
+  },
 }
+
+for name, opts in pairs(servers) do
+  opts.on_init = configs.on_init
+  opts.on_attach = configs.on_attach
+  opts.capabilities = configs.capabilities
+
+  require("lspconfig")[name].setup(opts)
+end

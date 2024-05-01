@@ -1,3 +1,5 @@
+-- https://github.com/folke/lazy.nvim/blob/main/README.md#%EF%B8%8F-configuration
+
 return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
