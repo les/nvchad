@@ -1,4 +1,4 @@
--- https://github.com/jiaoshijie/undotree/blob/main/lua/undotree/collector.lua
+-- https://github.com/jiaoshijie/undotree
 
 local options = {
   window = { winblend = 0 },

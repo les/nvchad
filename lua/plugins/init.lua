@@ -1,4 +1,4 @@
--- https://github.com/folke/lazy.nvim/blob/main/README.md#-plugin-spec
+-- https://lazy.folke.io/spec
 
 return {
   {
@@ -26,35 +26,9 @@ return {
 
   {
     "mfussenegger/nvim-lint",
-    enabled = true,
     event = "VeryLazy",
     config = function()
-      require("lint").linters_by_ft = {
-        css = { "stylelint" },
-        dockerfile = { "hadolint" },
-        go = { "golangcilint", "revive" },
-        html = { "htmlhint", "markuplint" },
-        javascript = { "biome", "jshint" },
-        json = { "jsonlint" },
-        lua = { "luacheck" },
-        make = { "checkmake" },
-        markdown = { "markdownlint" },
-        python = { "bandit", "mypy", "ruff", "vulture" },
-        rego = { "opa_check", "regal" },
-        rst = { "rstcheck", "rstlint" },
-        sh = { "shellcheck" },
-        sql = { "sqlfluff" },
-        systemd = { "systemdlint" },
-        terraform = { "tflint", "trivy" },
-        typescript = { "biome" },
-        yaml = { "yamllint" },
-      }
-
-      vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-        callback = function()
-          require("lint").try_lint()
-        end,
-      })
+      require "configs.lint"
     end,
   },
 
@@ -85,7 +59,7 @@ return {
       { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "markdown preview" },
     },
     build = function()
-      vim.cmd [[Lazy load markdown-preview.nvim]]
+      require("lazy").load { plugins = { "markdown-preview.nvim" } }
       vim.fn["mkdp#util#install"]()
     end,
     init = function()

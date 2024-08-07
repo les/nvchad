@@ -1,8 +1,8 @@
--- https://github.com/stevearc/conform.nvim/blob/master/README.md#formatters
+-- https://github.com/stevearc/conform.nvim
 
 local options = {
   formatters_by_ft = {
-    ["*"] = { "codespell", "trim_newlines", "trim_whitespace" },
+    ["*"] = { "trim_newlines", "trim_whitespace" },
     sh = { "shfmt" },
     css = { "prettier" },
     go = { "gofmt", "golines", "goimports" },

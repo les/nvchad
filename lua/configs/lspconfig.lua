@@ -1,6 +1,5 @@
--- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+-- https://github.com/neovim/nvim-lspconfig
 
--- load defaults i.e lua_lsp
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
