@@ -16,12 +16,12 @@ return {
 
   {
     "williamboman/mason.nvim",
-    opts = require "configs.mason"
+    opts = require "configs.mason",
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = require "configs.treesitter"
+    opts = require "configs.treesitter",
   },
 
   {
@@ -64,7 +64,7 @@ return {
     keys = {
       { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>", desc = "undotree toggle" },
     },
-    opts = "configs.undotree"
+    opts = "configs.undotree",
   },
 
   --[[
@@ -73,14 +73,13 @@ return {
     "toppair/peek.nvim",
     ft = { "markdown" },
     build = "deno task --quiet build:fast",
-    config = function()
-      require "configs.peek"
-    end,
+    opts = require "configs.peek",
   },
   --]]
 
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
     keys = {
       { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "markdown preview" },
@@ -102,7 +101,7 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    opts = require "configs.copilot"
+    opts = require "configs.copilot",
   },
 
   {
@@ -117,7 +116,7 @@ return {
     keys = {
       { "<Leader>cp", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "copilot toggle chat window" },
     },
-    opts = require "configs.copilotchat"
+    opts = require "configs.copilotchat",
   },
 
   {

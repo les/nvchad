@@ -31,6 +31,7 @@ local options = {
         "markdown_inline",
         "mermaid",
         "python",
+        "query",
         "requirements",
         "rst",
         "sql",
