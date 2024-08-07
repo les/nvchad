@@ -21,4 +21,4 @@ local options = {
   },
 }
 
-require("copilot").setup(options)
+return options

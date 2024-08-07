@@ -1,12 +1,7 @@
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 
-vim.api.nvim_create_autocmd("DiagnosticChanged", {
-  callback = function()
-    vim.diagnostic.setloclist { open = false }
-  end,
-})
-
-local configs = require "nvchad.configs.lspconfig"
+-- load defaults i.e lua_lsp
+require("nvchad.configs.lspconfig").defaults()
 
 local servers = {
   awk_ls = {},
@@ -52,6 +47,8 @@ local servers = {
   },
 }
 
+local configs = require "nvchad.configs.lspconfig"
+
 for name, opts in pairs(servers) do
   opts.on_init = configs.on_init
   opts.on_attach = configs.on_attach
@@ -59,3 +56,9 @@ for name, opts in pairs(servers) do
 
   require("lspconfig")[name].setup(opts)
 end
+
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
+  callback = function()
+    vim.diagnostic.setloclist { open = false }
+  end,
+})

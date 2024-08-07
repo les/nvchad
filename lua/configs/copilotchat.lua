@@ -7,4 +7,4 @@ local options = {
   history_path = vim.fn.stdpath "data" .. "/copilotchat_history",
 }
 
-require("CopilotChat").setup(options)
+return options

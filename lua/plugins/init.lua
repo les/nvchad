@@ -4,149 +4,24 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.conform"
-    end,
+    opts = require "configs.conform",
   },
 
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
 
   {
     "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "autotools-language-server",
-        "bash-language-server",
-        "biome",
-        "cbfmt",
-        "checkmake",
-        "codespell",
-        "css-lsp",
-        "delve",
-        "deno",
-        "docker-compose-language-service",
-        "dockerfile-language-server",
-        "eslint-lsp",
-        "firefox-debug-adapter",
-        "fixjson",
-        "gci",
-        "glow",
-        "go-debug-adapter",
-        "gofumpt",
-        "goimports",
-        "goimports-reviser",
-        "golangci-lint",
-        "golangci-lint-langserver",
-        "golines",
-        "gomodifytags",
-        "gopls",
-        "gospel",
-        "gotests",
-        "gotestsum",
-        "hadolint",
-        "html-lsp",
-        "iferr",
-        "impl",
-        "jq",
-        "js-debug-adapter",
-        "json-lsp",
-        "json-to-struct",
-        "jsonlint",
-        "lemminx",
-        "lua-language-server",
-        "luacheck",
-        "markdownlint",
-        "markdownlint-cli2",
-        "markmap-cli",
-        "marksman",
-        "mdformat",
-        "nilaway",
-        "oxlint",
-        "prettier",
-        "proselint",
-        "pyright",
-        "python-lsp-server",
-        "quick-lint-js",
-        "remark-language-server",
-        "revive",
-        "rstcheck",
-        "ruff",
-        "ruff-lsp",
-        "selene",
-        "shfmt",
-        "standardjs",
-        "staticcheck",
-        "stylelint",
-        "stylelint-lsp",
-        "stylua",
-        "taplo",
-        "templ",
-        "terraform-ls",
-        "textlint",
-        "tflint",
-        "tfsec",
-        "vale",
-        "vale-ls",
-        "write-good",
-        "xmllint",
-        "yaml-language-server",
-        "yamlfix",
-        "yamlfmt",
-        "yamllint",
-        "yq",
-      },
-    },
+    opts = require "configs.mason"
   },
 
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "comment",
-        "css",
-        "csv",
-        "diff",
-        "dockerfile",
-        "git_config",
-        "git_rebase",
-        "gitattributes",
-        "gitcommit",
-        "gitignore",
-        "go",
-        "gomod",
-        "gosum",
-        "gotmpl",
-        "gowork",
-        "hcl",
-        "html",
-        "ini",
-        "javascript",
-        "json",
-        "lua",
-        "luadoc",
-        "luap",
-        "make",
-        "markdown",
-        "markdown_inline",
-        "mermaid",
-        "python",
-        "requirements",
-        "rst",
-        "sql",
-        "terraform",
-        "toml",
-        "tsv",
-        "xml",
-        "yaml",
-      },
-    },
+    opts = require "configs.treesitter"
   },
 
   {
@@ -189,9 +64,7 @@ return {
     keys = {
       { "<leader>u", "<cmd>lua require('undotree').toggle()<cr>", desc = "undotree toggle" },
     },
-    config = function()
-      require "configs.undotree"
-    end,
+    opts = "configs.undotree"
   },
 
   --[[
@@ -229,9 +102,7 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    config = function()
-      require "configs.copilot"
-    end,
+    opts = require "configs.copilot"
   },
 
   {
@@ -246,9 +117,7 @@ return {
     keys = {
       { "<Leader>cp", "<cmd>CopilotChatToggle<cr>", mode = { "n", "v" }, desc = "copilot toggle chat window" },
     },
-    config = function()
-      require "configs.copilotchat"
-    end,
+    opts = require "configs.copilotchat"
   },
 
   {

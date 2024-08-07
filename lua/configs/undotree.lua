@@ -4,4 +4,4 @@ local options = {
   window = { winblend = 0 },
 }
 
-require("undotree").setup(options)
+return options
